@@ -1,9 +1,5 @@
-import cv2
-from time import sleep
-import os
-
-import separateframes
-import config
+import cv2, time, os
+import config, displayinfo, separateframes
 
 def setupCapture():
     cap = cv2.VideoCapture(config.cameraID)
@@ -11,10 +7,12 @@ def setupCapture():
     out = cv2.VideoWriter("capture.avi", fourcc, config.native_fps, config.cap_res)
 
     while cap.isOpened:
-        ret, currentFrame = cap.read()
+        ret, current_frame = cap.read()
         if ret == True:
-            out.write(currentFrame)
-            cv2.imshow("OpenCV Image Processor", currentFrame)
+            out.write(current_frame)
+            # total_images = (out.get(cv2.CAP_PROP_FRAME_COUNT) / config.native_fps) * config.fps
+            # displayinfo.drawTextOnFeed(current_frame, str(int(total_images)), (20,20), (255,0,0))
+            cv2.imshow("OpenCV Image Processor", current_frame)
             if checkKeyPress():
                 break
         else:
@@ -39,5 +37,5 @@ if __name__ == "__main__":
     separateframes.setDir()
     setupCapture()
     separateframes.getFrames()
-    sleep(0.5) # ensure avi file is finalized
+    time.sleep(0.5) # ensure avi file is finalized
     cleanUpDir()
