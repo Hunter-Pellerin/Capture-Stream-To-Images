@@ -5,12 +5,6 @@ import os
 import separateframes
 import config
 
-def checkKeyPress():
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        return True
-    else:
-        return False
-
 def setupCapture():
     cap = cv2.VideoCapture(config.cameraID)
     fourcc = cv2.VideoWriter_fourcc(*"XVID")
@@ -26,6 +20,12 @@ def setupCapture():
         else:
             break
     destroyCapture(cap, out)
+
+def checkKeyPress():
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        return True
+    else:
+        return False
 
 def destroyCapture(capture, output):
     capture.release()
