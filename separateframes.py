@@ -17,7 +17,7 @@ def setDir():
         return True
 
 
-def getFrames():
+def outputResizedFrames():
     total_frames = config.native_fps
     frame_index = 0 # uses the arbitrary value for desired amount of output fps
     resize_count = 0

@@ -36,6 +36,6 @@ def cleanUpDir():
 if __name__ == "__main__":
     separateframes.setDir()
     setupCapture()
-    separateframes.getFrames()
+    separateframes.outputResizedFrames()
     time.sleep(0.5) # ensure avi file is finalized
     cleanUpDir()
