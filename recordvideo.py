@@ -5,14 +5,16 @@ def setupCapture():
     cap = cv2.VideoCapture(config.cameraID)
     fourcc = cv2.VideoWriter_fourcc(*"XVID")
     out = cv2.VideoWriter("capture.avi", fourcc, config.native_fps, config.cap_res)
+    frameCounter=1
 
     while cap.isOpened:
-        ret, current_frame = cap.read()
+        ret, currentFrame = cap.read()
         if ret == True:
-            out.write(current_frame)
-            # total_images = (out.get(cv2.CAP_PROP_FRAME_COUNT) / config.native_fps) * config.fps
-            # displayinfo.drawTextOnFeed(current_frame, str(int(total_images)), (20,20), (255,0,0))
-            cv2.imshow("OpenCV Image Processor", current_frame)
+            out.write(currentFrame)
+            frameCounter+=1
+            totalImages = int((frameCounter / config.native_fps) * config.fps)
+            displayinfo.drawTextOnFeed(currentFrame, "Frames: {}".format(str(totalImages)), (15,30), (0,0,0))
+            cv2.imshow("OpenCV Image Processor", currentFrame)
             if checkKeyPress():
                 break
         else:
