@@ -34,7 +34,6 @@ def outputResizedFrames():
         cap.set(config.fps, total_frames)
         resize_count+=1
         resizeProgress(resize_count, int(cap.get(cv2.CAP_PROP_FRAME_COUNT)))
-
     
     cap.release()
     cv2.destroyAllWindows()
