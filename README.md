@@ -5,9 +5,9 @@ Uses OpenCV (currently using the python wrapper, may also use C++ soon) to proce
 # Prerequisites:
 -Python (tested using 3.8.1 x64)
 
--OpenCV
+-OpenCV (tested using 4.1.2)
 
--Webcam
+-Webcam (tested using Logitech C270)
 
 
 # Instructions:
