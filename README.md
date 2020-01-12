@@ -4,7 +4,9 @@ Uses OpenCV (currently using the python wrapper, may also use C++ soon) to proce
 
 # Prerequisites:
 -Python (tested using 3.8.1 x64)
+
 -OpenCV
+
 -Webcam
 
 
