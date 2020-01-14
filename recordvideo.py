@@ -1,5 +1,5 @@
 import cv2, time, os
-import config, displayinfo, separateframes
+import config, displayinfo, separateframes, uploadtoftp
 
 def setupCapture():
     cap = cv2.VideoCapture(config.cameraID)
@@ -11,7 +11,7 @@ def setupCapture():
         ret, currentFrame = cap.read()
         if ret == True:
             out.write(currentFrame)
-            frameCounter+=1
+            frameCounter += 1
             totalImages = int((frameCounter / config.native_fps) * config.fps)
             displayinfo.drawTextOnFeed(currentFrame, "Frames: {}".format(str(totalImages)), (15,30), (0,0,0))
             cv2.imshow("OpenCV Image Processor", currentFrame)
@@ -41,3 +41,5 @@ if __name__ == "__main__":
     separateframes.outputResizedFrames()
     time.sleep(0.5) # ensure avi file is finalized
     cleanUpDir()
+    time.sleep(2)
+    uploadtoftp.main()

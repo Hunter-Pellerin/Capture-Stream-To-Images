@@ -3,6 +3,7 @@ import config
 
 cwd = os.getcwd()
 path = os.path.join(cwd, config.output_folder_name)
+total_output_frames = 0
 
 def setDir():
     if config.output_directory != "":
