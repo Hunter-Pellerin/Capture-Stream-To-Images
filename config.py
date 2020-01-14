@@ -11,7 +11,7 @@ output_directory = ""  # leave blank to use a new folder in the current director
 
 
 # ## ## # FTP CONFIG # ## ## #
-uploadFilesToFTP = True  # uploads the converted files to an ftp server
+uploadFilesToFTP = False  # uploads the converted files to an ftp server
                          # ***Requires further configuration in the uploadtoftp.py file.***
 
 targetDir = "/home/user/documents"  #replace with your directory
