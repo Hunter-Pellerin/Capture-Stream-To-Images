@@ -1,4 +1,4 @@
-import cv2, time, os
+import cv2, os
 import config, displayinfo, separateframes, uploadtoftp
 
 def setupCapture():
@@ -38,8 +38,12 @@ def cleanUpDir():
 if __name__ == "__main__":
     separateframes.setDir()
     setupCapture()
-    separateframes.outputResizedFrames()
-    time.sleep(0.5) # ensure avi file is finalized
-    cleanUpDir()
-    time.sleep(2)
-    uploadtoftp.main()
+    while separateframes.outputResizedFrames() is False:
+        try:
+            cleanUpDir()
+            uploadtoftp.main()
+        except:
+            pass
+    else:
+        cleanUpDir()
+        uploadtoftp.main()

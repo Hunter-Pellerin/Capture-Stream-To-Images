@@ -38,6 +38,7 @@ def outputResizedFrames():
     
     cap.release()
     cv2.destroyAllWindows()
+    return True
 
 def resizeImage(img):
     return cv2.resize(img, config.scaled_res, interpolation = cv2.INTER_AREA)
