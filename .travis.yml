@@ -1,3 +1,7 @@
 language: python
+
+  install:
+    pip install opencv-python
+
   script:
     - recordvideo
